@@ -66,7 +66,8 @@ p {
 }
 h1,
 h2,
-.fs-h3 {
+.fs-h3,
+button {
   color: var(--headings-color);
   font-family: Plus Jakarta Sans;
   font-style: normal;
@@ -110,6 +111,7 @@ a.btn img {
   border-radius: 5px;
   padding: 16px 24px;
   font-weight: 700;
+  font-size: 14px;
 }
 .primary__btn,
 .icon {
@@ -239,14 +241,17 @@ form input[type="text"] {
 form input[type="email"] {
   background-image: url("/assets/icons/Send.svg");
 }
-form input[type="text"], input[type="email"] {
+form input[type="text"],
+input[type="email"] {
   background-position: 10px 10px;
   background-repeat: no-repeat;
   padding-left: 36px;
   border-radius: 5px;
 }
 @media screen and (min-width: 769px) {
-    form {max-width: 80%;}
+  form {
+    max-width: 80%;
+  }
 }
 
 .cards {
@@ -256,7 +261,7 @@ form input[type="text"], input[type="email"] {
   width: 100%;
 }
 .card-grid {
-    width: 95%
+  width: 95%;
 }
 .card-grid img {
   width: -webkit-fill-available;
@@ -266,19 +271,19 @@ form input[type="text"], input[type="email"] {
   margin-top: 20px;
 }
 .carousel-buttons {
-    column-gap: 10px;
+  column-gap: 10px;
 }
 @media screen and (min-width: 768px) {
-    .cards {
-        overflow-x: auto;
-    }
-    .card-grid {
-        display: flex;
-        flex-direction: column;
-        width: 32%;
-        column-gap: 2%;
-        row-gap: 20px;
-    }
+  .cards {
+    overflow-x: auto;
+  }
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    column-gap: 2%;
+    row-gap: 20px;
+  }
 }
 
 .thrive-section .mini-list {
@@ -286,12 +291,11 @@ form input[type="text"], input[type="email"] {
   column-gap: 40px;
 }
 @media screen and (min-width: 768px) {
-    .thrive-section {
-      display: grid;
-    }
+  .thrive-section {
+    display: grid;
+  }
 }
 
 .faq-intro {
   margin: auto;
 }
-
