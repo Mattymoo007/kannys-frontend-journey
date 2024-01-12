@@ -327,16 +327,15 @@ input[type="email"] {
   display: block;
 }
 .faq-answer {
-  padding: 16px 24px;
-  display: none;
-}
-.faq-answer p {
-  height: 0;
-  transition: height 0.3s ease;
+  padding: 8px 24px;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.7s ease;
+  overflow: hidden;
 }
 .faq-answer.active {
-  display: block;
-}
-.faq-answer.active p {
-  height: 100%;
+  padding: 20px 24px;
+  max-height: 500px;
+  overflow: visible;
+  opacity: 1;
 }
