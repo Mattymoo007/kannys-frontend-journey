@@ -236,14 +236,14 @@ input {
   padding: 16px;
 }
 form input[type="text"] {
-  background-image: url("/assets/icons/Profile.svg");
+  background-image: url("/Step 1/assets/icons/Profile.svg");
 }
 form input[type="email"] {
-  background-image: url("/assets/icons/Send.svg");
+  background-image: url("/Step 1/assets/icons/Send.svg");
 }
 form input[type="text"],
 input[type="email"] {
-  background-position: 10px 10px;
+  background-position: 10px 16px;
   background-repeat: no-repeat;
   padding-left: 36px;
   border-radius: 5px;
@@ -298,4 +298,45 @@ input[type="email"] {
 
 .faq-intro {
   margin: auto;
+}
+.faq-wrapper {
+  margin-bottom: 10px;
+}
+.faq-question {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: var(--clr-white) !important;
+  padding: 16px 24px;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--body-text);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.faq-question:hover {
+  filter: brightness(130%);
+}
+.faq-question p {
+  color: var(--clr-white) !important;
+}
+.faq-question .minus-icon,
+.faq-question.active .plus-icon {
+  display: none;
+}
+.faq-question.active .minus-icon {
+  display: block;
+}
+.faq-answer {
+  padding: 16px 24px;
+  display: none;
+}
+.faq-answer p {
+  height: 0;
+  transition: height 0.3s ease;
+}
+.faq-answer.active {
+  display: block;
+}
+.faq-answer.active p {
+  height: 100%;
 }
