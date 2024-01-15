@@ -12,10 +12,10 @@ In this stage, you will work through a series of projects aimed at cementing the
 
 | Step | Topics                                       | Project and Requirements                                                                 | Learning Goals                        | Status      |
 |------|----------------------------------------------|------------------------------------------------------------------------------------------|---------------------------------------|-------------|
-| 1    | HTML basics, tags, attributes               | Basic HTML Page: Create a webpage using basic HTML tags                                  | Understand HTML structure and layout  | 🟡          |
-| 2    | CSS selectors, properties, values           | Style the HTML Page: Apply CSS styling                                                   | Grasp basic CSS styling techniques    | 🟡          |
-| 3    | Media queries, flexbox, CSS Grid            | Make the HTML Page Responsive: Implement responsiveness                                   | Create responsive designs             | 🟡          |
-| 4    | JS Variables, data types, loops, functions  | Simple Calculator/To-Do List: Build using basic JS operations                            | Understand JavaScript basics          | 🛑          |
+| 1    | HTML basics, tags, attributes               | Basic HTML Page: Create a webpage using basic HTML tags                                  | Understand HTML structure and layout  | 🟢          |
+| 2    | CSS selectors, properties, values           | Style the HTML Page: Apply CSS styling                                                   | Grasp basic CSS styling techniques    | 🟢          |
+| 3    | Media queries, flexbox, CSS Grid            | Make the HTML Page Responsive: Implement responsiveness                                   | Create responsive designs             | 🟢          |
+| 4    | JS Variables, data types, loops, functions  | Simple Calculator/To-Do List: Build using basic JS operations                            | Understand JavaScript basics          | 🟡          |
 | 5    | DOM elements, events, methods                | Add Interactivity to HTML Page: Implement features like collapsible sections              | Grasp DOM manipulation                | 🛑          |
 | 6    | Git basics, branches, merges                 | Multi-Page Website with Git: Use Git for version control                                 | Learn version control with Git        | 🛑          |
 | 7    | Vue 3: Composition API, reactive data       | Basic Vue App: Build a counter application using the Composition API                     | Dive into Vue 3 basics                | 🛑          |
