@@ -234,10 +234,10 @@ input {
   padding: 16px;
 }
 form input[type="text"] {
-  background-image: url("/assets/icons/Profile.svg");
+  background-image: url("./assets/icons/Profile.svg");
 }
 form input[type="email"] {
-  background-image: url("/assets/icons/Send.svg");
+  background-image: url("./assets/icons/Send.svg");
 }
 form input[type="text"], input[type="email"] {
   background-position: 10px 10px;
