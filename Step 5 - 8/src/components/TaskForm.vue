@@ -28,8 +28,9 @@ export default {
     const priority = ref('')
 
     const submitTask = () => {
-      if (!title.value.trim() || !priority.value) 
-      return emit('add-task', {
+      if (!title.value.trim() || !priority.value) return;
+
+        emit('add-task', {
         title: title.value.trim(),
         priority: priority.value
       })
