@@ -4,7 +4,11 @@
 
     <TaskList :tasks="tasks">
       <template #default="{ task }">
-        <TaskItem :task="task"/>
+        <TaskItem 
+          :task="task"
+          @toggle-complete="toggleComplete(task.id)"
+          @delete-task="deleteTask(task.id)"
+        />
       </template>
     </TaskList>
   </main>
@@ -27,5 +31,11 @@
   const addTask = (task) => {
     tasks.value.push({ ...task, id: idCounter.value++, completed: false })
   }
+  const toggleComplete = (id) => {
+    const task = tasks.value.find(t => t.id === id)
+    if (task) task.completed = !task.completed
+  }
+  const deleteTask = (id) => {
+    tasks.value = tasks.value.filter(t => t.id !== id)
+  }
 </script>
-

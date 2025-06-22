@@ -1,8 +1,8 @@
 <template>
   <div>
-    <input type="checkbox"/>
+    <input type="checkbox" :checked="task.completed" @change="$emit('toggle-complete')"/>
     <span>{{ task.title }}</span>
-    <button>🗑️</button>
+    <button @click="$emit('delete-task')">🗑️</button>
   </div>
 </template>
 
