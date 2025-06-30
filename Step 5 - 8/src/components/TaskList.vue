@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="task-list">
     <slot v-for="task in tasks" :task="task" :key="task.id" />
   </div>
 </template>
@@ -15,3 +15,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.task-list {
+  margin-top: 1rem;
+}
+</style>

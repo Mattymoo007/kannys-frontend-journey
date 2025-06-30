@@ -1,12 +1,12 @@
 <template>
   <main>
-    <TaskForm @add-task="addTask"/>
+    <TaskForm @add-task="addTask" />
 
-    <TaskFilter @filter-change="onFilterChange"/>
+    <TaskFilter @filter-change="onFilterChange" />
 
     <TaskList :tasks="filteredTasks">
       <template #default="{ task }">
-        <TaskItem 
+        <TaskItem
           :task="task"
           @toggle-complete="() => toggleComplete(task.id)"
           @delete-task="() => deleteTask(task.id)"
@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-  import { ref, computed } from 'vue';
+  import { ref, reactive, computed } from 'vue'
   import TaskItem from './components/TaskItem.vue'
   import TaskList from './components/TaskList.vue'
   import TaskForm from './components/TaskForm.vue'
@@ -25,29 +25,32 @@
 
   const idCounter = ref(4)
   const filter = ref('All')
-  const tasks = ref([
+  const tasks = reactive([
     { id: 1, title: 'Learn Vue 3 basics', priority: 'High', completed: false },
-    { id: 2, title: 'Learn Git', priority: 'Medium', completed: false },
-    { id: 3, title: 'Practice', priority: 'Low', completed: false }
+    { id: 2, title: 'Learn Git', priority: 'Low', completed: false },
+    { id: 3, title: 'Practice', priority: 'Medium', completed: false },
   ])
 
   const addTask = (task) => {
-    tasks.value.push({ ...task, id: idCounter.value++, completed: false })
+    tasks.push({ ...task, id: idCounter.value++, completed: false })
   }
+
   const toggleComplete = (id) => {
-    const task = tasks.value.find(t => t.id === id)
+    const task = tasks.find((t) => t.id === id)
     if (task) task.completed = !task.completed
   }
+
   const deleteTask = (id) => {
-    tasks.value = tasks.value.filter(t => t.id !== id)
+    const index = tasks.findIndex((t) => t.id === id)
+    if (index !== -1) tasks.splice(index, 1)
   }
   const onFilterChange = (newFilter) => {
     filter.value = newFilter
   }
+
   const filteredTasks = computed(() => {
-    if (filter.value === 'Completed') return tasks.value.filter(t => t.completed)
-    if (filter.value === 'Pending') return tasks.value.filter(t => !t.completed)
-    console.log(tasks.value)
-    return tasks.value
+    if (filter.value === 'Completed') return tasks.filter((t) => t.completed)
+    if (filter.value === 'Pending') return tasks.filter((t) => !t.completed)
+    return tasks
   })
 </script>
