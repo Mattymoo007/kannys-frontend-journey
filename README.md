@@ -8,6 +8,16 @@ A structured learning path to becoming a full-stack AI-powered frontend develope
 
 ---
 
+## 🎯 Current Focus
+
+**Step 2: JavaScript Fundamentals** → [Go to step](step-02-javascript/)
+
+Working on: RGB Guesser Game - fix reset bug and missing variable declaration
+
+Next up: Step 3 - Git & GitHub Workflow
+
+---
+
 ## Progress Overview
 
 | Phase | Steps | Status |
