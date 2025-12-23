@@ -63,9 +63,6 @@ Next up: Step 3 - Git & GitHub Workflow
 kannys-frontend-journey/
 ├── docs/                      # Learning resources
 │   └── resources.md           # Curated links
-├── progress/                  # Progress tracking
-│   ├── weekly-log.md          # Weekly meeting notes
-│   └── milestones.md          # Key achievements
 ├── step-01-css-layouts/       # Company homepage project
 ├── step-02-javascript/        # RGB Guesser game
 ├── step-03-git-workflow/      # Git learning (via PRs)
@@ -90,10 +87,10 @@ kannys-frontend-journey/
 5. Address feedback, then merge
 
 ### Weekly Check-ins
-- Review progress and PRs
+- Review progress on [Project Board](https://github.com/users/Mattymoo007/projects/1)
 - Discuss blockers and theory
 - Set goals for the next week
-- Update `progress/weekly-log.md`
+- Move cards on the board as needed
 
 ---
 
