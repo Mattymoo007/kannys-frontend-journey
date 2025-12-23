@@ -1,38 +1,111 @@
-# Your Frontend Journey 🚀
+# Kanny's Frontend Journey
 
-Welcome to your training repository! 🎉 This space is designed to guide you from a novice to a junior frontend developer. Our comprehensive training program will ensure that by the end, you'll be well-equipped to contribute meaningfully to our company's applications.
+A structured learning path to becoming a full-stack AI-powered frontend developer.
 
-## Programme Breakdown 📚
-
-The training program is divided into three distinct stages:
-
-### Stage 1: Assignments or Frontend Projects 🛠️
-
-In this stage, you will work through a series of projects aimed at cementing the core concepts of frontend development.
-
-| Step | Topics                                     | Project and Requirements                                                            | Learning Goals                        | Status | Estimated Duration |
-| ---- | ------------------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------- | ------ | ------------------ |
-| 1    | HTML basics, tags, attributes              | Basic HTML Page: Create a webpage using basic HTML tags                             | Understand HTML structure and layout  | 🟢     | 3 days             |
-| 2    | CSS selectors, properties, values          | Style the HTML Page: Apply CSS styling                                              | Grasp basic CSS styling techniques    | 🟢     | 3 days             |
-| 3    | Media queries, flexbox, CSS Grid           | Make the HTML Page Responsive: Implement responsiveness                             | Create responsive designs             | 🟢     | 3 days             |
-| 4    | JS Variables, data types, loops, functions | RGB Guesser game                                                                    | Understand JavaScript basics          | 🟡     | 5 days             |
-| 5    | DOM elements, events, methods              | Add Interactivity to HTML Page: Implement features like collapsible sections        | Grasp DOM manipulation                | 🟡     | 5 days             |
-| 6    | Git basics, branches, merges               | Multi-Page Website with Git: Use Git for version control                            | Learn version control with Git        | 🛑     | 3 days             |
-| 7    | Vue 3: Composition API, reactive data      | Basic Vue App: Build a counter application using the Composition API                | Dive into Vue 3 basics                | 🛑     | 6 days             |
-| 8    | Vue 3: Components, props, slots, events    | Vue Component Library: Build a set of reusable Vue components                       | Understand Vue component architecture | 🛑     | 1 week             |
-| 9    | API calls, RESTful services, JSON          | Weather Dashboard: Build a dashboard that shows real-time weather data using an API | Grasp API integration with Vue        | 🛑     | 1 week             |
-| 10   | Deployment, code splitting, PWA basics     | Deploy Production-Ready Vue App: Implement optimizations and deploy                 | Learn deployment and optimization     | 🛑     | 1.5 weeks          |
-
-### Stage 2: Theoretical Test 🧠
-
-This stage tests your theoretical understanding of frontend development as it pertains to our company's specific applications. It comprises a list of questions derived from the roadmap followed in the training. There's no time limit, and you aren't required to memorize answers. The goal is to ensure comprehension.
-
-### Stage 3: Company Task 🖥️
-
-In the final stage, you'll be assigned a task directly from our company backlog. While the specifics are yet to be defined, it might involve creating a UI component from scratch or enhancing an existing component with more complex features.
+**Timeline**: 12 weeks (3-4 months)
+**Stack**: Vue 3 + Nuxt 3
+**Goal**: Full-stack frontend skills with AI integration
 
 ---
 
-## Final Note 🌟
+## Progress Overview
 
-Your journey might be challenging, but remember: every assignment, every line of code brings you closer to your goal. With dedication and hard work, the reward will be worth it – stepping up as our new Junior Frontend Developer. We believe in you! 🎊
+| Phase | Steps | Status |
+|-------|-------|--------|
+| Foundations | 1-3 | In Progress |
+| Vue Essentials | 4-6 | Not Started |
+| Nuxt & Real-World | 7-10 | Not Started |
+
+---
+
+## Learning Roadmap
+
+### Phase 1: Foundations (Weeks 1-4)
+
+| Step | Focus | Project | Status |
+|------|-------|---------|--------|
+| 1 | CSS Layouts & Responsive Design | Company Homepage | Completed |
+| 2 | JavaScript Fundamentals | RGB Guesser Game | In Progress |
+| 3 | Git & GitHub Workflow | PR-based development | Not Started |
+
+### Phase 2: Vue Essentials (Weeks 5-8)
+
+| Step | Focus | Project | Status |
+|------|-------|---------|--------|
+| 4 | Vue 3 Composition API | To-Do App | Not Started |
+| 5 | Component Patterns | Refactor To-Do (slots, composables) | Not Started |
+| 6 | State Management | Add Pinia to To-Do | Not Started |
+
+### Phase 3: Nuxt & Real-World (Weeks 9-12)
+
+| Step | Focus | Project | Status |
+|------|-------|---------|--------|
+| 7 | Nuxt 3 Basics | Convert To-Do to Nuxt | Not Started |
+| 8 | API Integration | Weather Dashboard | Not Started |
+| 9 | AI-Powered Features | Add AI assistant to app | Not Started |
+| 10 | Production & Deploy | Deploy to Vercel/Netlify | Not Started |
+
+---
+
+## Repository Structure
+
+```
+kannys-frontend-journey/
+├── docs/                      # Learning resources
+│   └── resources.md           # Curated links
+├── progress/                  # Progress tracking
+│   ├── weekly-log.md          # Weekly meeting notes
+│   └── milestones.md          # Key achievements
+├── step-01-css-layouts/       # Company homepage project
+├── step-02-javascript/        # RGB Guesser game
+├── step-03-git-workflow/      # Git learning (via PRs)
+├── step-04-vue-basics/        # Vue 3 To-Do app
+├── step-05-components/        # Advanced component patterns
+├── step-06-state-pinia/       # Pinia state management
+├── step-07-nuxt-basics/       # Nuxt 3 conversion
+├── step-08-api-integration/   # Weather dashboard
+├── step-09-ai-features/       # AI chatbot integration
+└── step-10-production/        # Deployment & optimization
+```
+
+---
+
+## Workflow
+
+### For Each Step
+1. Create a branch: `step-XX-name`
+2. Read the step's README for requirements
+3. Work on the project, commit often
+4. Open a PR when ready for review
+5. Address feedback, then merge
+
+### Weekly Check-ins
+- Review progress and PRs
+- Discuss blockers and theory
+- Set goals for the next week
+- Update `progress/weekly-log.md`
+
+---
+
+## AI-Assisted Learning
+
+AI tools are encouraged throughout this journey:
+
+**Do:**
+- Use AI to explain concepts
+- Debug with AI assistance
+- Generate boilerplate, then modify and understand
+- Ask "why" questions
+
+**Don't:**
+- Copy-paste without understanding
+- Skip the learning process
+- Use AI for entire solutions without attempting first
+
+**Weekly question:** "What did you learn using AI that you couldn't have figured out as quickly on your own?"
+
+---
+
+## Resources
+
+See [docs/resources.md](docs/resources.md) for curated learning materials.
