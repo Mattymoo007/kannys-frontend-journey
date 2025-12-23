@@ -19,9 +19,9 @@ New step folders created as Kanny starts each step.
 
 ## Tracking
 
-- **Project Board**: https://github.com/users/Mattymoo007/projects/1
-- **Issues**: Each step has an issue with full requirements + checklist
-- **PRs**: Code review happens via pull requests
+- **Issues**: Each step = one issue with requirements + checklist
+- **Labels**: `todo`, `in-progress`, `done`
+- **PRs**: Code review via pull requests
 
 ## Tech Stack
 

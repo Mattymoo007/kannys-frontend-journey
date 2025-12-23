@@ -18,7 +18,13 @@ Next up: Step 3 - Git & GitHub Workflow
 
 ## 📋 Track Progress
 
-**[→ Open Project Board](https://github.com/users/Mattymoo007/projects/1)**
+[**→ View All Steps**](https://github.com/Mattymoo007/kannys-frontend-journey/issues)
+
+| Label | Meaning |
+|-------|---------|
+| 🟢 `done` | Completed |
+| 🟡 `in-progress` | Currently working on |
+| 🟢 `todo` | Not started |
 
 | Phase | Steps | Focus |
 |-------|-------|-------|
@@ -30,12 +36,12 @@ Next up: Step 3 - Git & GitHub Workflow
 
 ## 🔄 Workflow
 
-1. Check the [Project Board](https://github.com/users/Mattymoo007/projects/1) for current step
-2. Open the Issue for full requirements + checklist
+1. Find current `in-progress` issue
+2. Check the requirements + checklist
 3. Create branch: `step-XX-name`
 4. Code, commit often, open PR
-5. Check boxes in Issue as you go
-6. Get review, merge, move card to Done
+5. Check boxes as you go
+6. Get review, merge, change label to `done`
 
 ---
 
