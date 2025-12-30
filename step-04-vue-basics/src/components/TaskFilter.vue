@@ -13,14 +13,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
-const options = ['All', 'Pending', 'Completed']
-const disabledButton = ref('All')
-
-const { currentFilter } = defineProps({ currentFilter: String })
+const props = defineProps({
+  currentFilter: {
+    type: String,
+    default: 'All'
+  }
+})
 
 const emit = defineEmits(['filter-change'])
+
+const options = ['All', 'Pending', 'Completed']
+const disabledButton = ref(props.currentFilter)
+
+watch(
+  () => props.currentFilter,
+  (newValue) => {
+    disabledButton.value = newValue
+  }
+)
 
 function handleClick(option) {
   if (disabledButton.value !== option) {

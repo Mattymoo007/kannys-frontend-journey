@@ -4,16 +4,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'TaskList',
-  props: {
-    tasks: {
-      type: Array,
-      required: true
-    }
+<script setup>
+defineProps({
+  tasks: {
+    type: Array,
+    required: true
   }
-}
+})
 </script>
 
 <style scoped>
