@@ -8,26 +8,28 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'TaskItem',
-  props: {
-    task: {
-      type: Object,
-      required: true
-    }
-  },
-  computed: {
-    priorityClass() {
-      switch (this.task.priority) {
-        case 'High': return 'high';
-        case 'Medium': return 'medium';
-        case 'Low': return 'low';
-        default: return '';
-      }
-    }
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  task: {
+    type: Object,
+    required: true
   }
-}
+})
+
+const priorityClass = computed(() => {
+  switch (props.task.priority) {
+    case 'High':
+      return 'high'
+    case 'Medium':
+      return 'medium'
+    case 'Low':
+      return 'low'
+    default:
+      return ''
+  }
+})
 </script>
 
 <style scoped>

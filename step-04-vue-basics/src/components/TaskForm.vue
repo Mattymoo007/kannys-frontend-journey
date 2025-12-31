@@ -12,35 +12,24 @@
   </form>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  name: 'TaskForm',
-  emits: ['add-task'],
-  setup(props, { emit }) {
-    const title = ref('')
-    const priority = ref('')
+const emit = defineEmits(['add-task'])
 
-    const submitTask = () => {
-      if (!title.value.trim() || !priority.value) return
+const title = ref('')
+const priority = ref('')
 
-      emit('add-task', {
-        title: title.value.trim(),
-        priority: priority.value,
-      })
+function submitTask() {
+  if (!title.value.trim() || !priority.value) return
 
-      //console.log(title.value)
-      title.value = ''
-      priority.value = ''
-    }
+  emit('add-task', {
+    title: title.value.trim(),
+    priority: priority.value,
+  })
 
-    return {
-      title,
-      priority,
-      submitTask,
-    }
-  },
+  title.value = ''
+  priority.value = ''
 }
 </script>
 
