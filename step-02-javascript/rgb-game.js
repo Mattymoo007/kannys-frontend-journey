@@ -86,6 +86,13 @@ function handleRectangleClick(e) {
     messageDisplay.classList.remove("green", "orange");
     rectangles.forEach((rectangle) => rectangle.classList.add("ghost"));
     messageDisplay.textContent = "You lose";
+    // Highlight the correct rectangle
+    rectangles.forEach((rectangle) => {
+      if (normalizeColor(rectangle.style.backgroundColor) === targetColor) {
+        rectangle.classList.remove("ghost");
+        rectangle.style.outline = "4px solid #2ecc40";
+      }
+    });
   } else {
     messageDisplay.classList.add("orange");
     messageDisplay.classList.remove("red", "green");
