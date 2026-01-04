@@ -9,6 +9,7 @@ let score = 0;
 const colorDisplay = document.getElementById("color-guess");
 const messageDisplay = document.querySelector("#message");
 const scoreDisplay = document.getElementById("score");
+const newGameButton = document.querySelector("#new-game");
 const resetButton = document.querySelector("#reset");
 
 // Initialize game
@@ -94,5 +95,12 @@ function handleRectangleClick(e) {
   }
 }
 
+// New game mechanism
+newGameButton.addEventListener("click", init);
+
 // Reset mechanism
-resetButton.addEventListener("click", init);
+resetButton.addEventListener("click", () => {
+  score = 0;
+  scoreDisplay.textContent = score;
+  init();
+});
