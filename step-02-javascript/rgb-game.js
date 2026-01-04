@@ -24,7 +24,10 @@ function init() {
   guessings = 0;
   messageDisplay.textContent = "";
   messageDisplay.classList.remove("red", "green", "orange");
-  rectangles.forEach((rectangle) => rectangle.classList.remove("ghost"));
+  rectangles.forEach((rectangle) => {
+    rectangle.classList.remove("ghost");
+    rectangle.style.outline = "";
+  });
 }
 
 // Generate one color option
@@ -84,7 +87,13 @@ function handleRectangleClick(e) {
   } else if (guessings >= 2) {
     messageDisplay.classList.add("red");
     messageDisplay.classList.remove("green", "orange");
-    rectangles.forEach((rectangle) => rectangle.classList.add("ghost"));
+    rectangles.forEach((rectangle) => {
+      rectangle.classList.add("ghost");
+      // Remove click event listener by replacing with clone
+      rectangle.replaceWith(rectangle.cloneNode(true));
+    });
+    // Re-select rectangles after cloning
+    rectangles = document.querySelectorAll(".color-option");
     messageDisplay.textContent = "You lose";
     // Highlight the correct rectangle
     rectangles.forEach((rectangle) => {
