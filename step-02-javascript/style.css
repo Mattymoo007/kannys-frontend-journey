@@ -4,7 +4,7 @@
 body {
     overflow: hidden;
 }
-h2, .color-countainer, #reset {
+h2, .color-countainer, .btn {
     background-color: #383737;
     color: white;
 }
@@ -29,12 +29,12 @@ h2 {
     font-weight: bold;
     height: 64.5px;
 }
-#reset {
+.btn {
     padding: 8px 16px;
     box-sizing: border-box;
     cursor: pointer;
 }
-#reset:hover {
+.btn:hover {
     color: #383737;
     background-color: white;
     border: #383737 1px solid;
