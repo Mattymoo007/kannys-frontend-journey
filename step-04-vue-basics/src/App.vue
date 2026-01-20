@@ -1,13 +1,11 @@
 <template>
-  <Header>
-    <template #header>
+  <Header #header>
       <h1>My Task Manager</h1>
-    </template>
   </Header>
   <main>
     <TaskForm @add-task="addTask" />
 
-    <TaskFilter @filter-change="onFilterChange" />
+    <TaskFilter :current-filter="currentFilter" @filter-change="setFilter" />
 
     <TaskList :tasks="filteredTasks">
       <template #default="{ task }">
@@ -19,50 +17,22 @@
       </template>
     </TaskList>
   </main>
-  <Footer>
-    <template #footer>
+  <Footer #footer>
       <p>© 2026 Kanny Gusenga</p>
-    </template>
   </Footer>
 </template>
 
 <script setup>
-  import { ref, reactive, computed } from 'vue'
-  import TaskItem from './components/TaskItem.vue'
-  import TaskList from './components/TaskList.vue'
-  import TaskForm from './components/TaskForm.vue'
-  import TaskFilter from './components/TaskFilter.vue'
+import TaskItem from './components/TaskItem.vue'
+import TaskList from './components/TaskList.vue'
+import TaskForm from './components/TaskForm.vue'
+import TaskFilter from './components/TaskFilter.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
-  const idCounter = ref(4)
-  const filter = ref('All')
-  const tasks = reactive([
-    { id: 1, title: 'Learn Vue 3 basics', priority: 'High', completed: false },
-    { id: 2, title: 'Learn Git', priority: 'Low', completed: false },
-    { id: 3, title: 'Practice', priority: 'Medium', completed: false },
-  ])
+import { useTask } from './composables/useTask.js'
+import { useFilter } from './composables/useFilter.js'
 
-  const addTask = (task) => {
-    tasks.push({ ...task, id: idCounter.value++, completed: false })
-  }
-
-  const toggleComplete = (id) => {
-    const task = tasks.find((t) => t.id === id)
-    if (task) task.completed = !task.completed
-  }
-
-  const deleteTask = (id) => {
-    const index = tasks.findIndex((t) => t.id === id)
-    if (index !== -1) tasks.splice(index, 1)
-  }
-  const onFilterChange = (newFilter) => {
-    filter.value = newFilter
-  }
-
-  const filteredTasks = computed(() => {
-    if (filter.value === 'Completed') return tasks.filter((t) => t.completed)
-    if (filter.value === 'Pending') return tasks.filter((t) => !t.completed)
-    return tasks
-  })
+const { tasks, addTask, toggleComplete, deleteTask } = useTask()
+const { currentFilter, setFilter, filteredTasks } = useFilter(tasks)
 </script>
