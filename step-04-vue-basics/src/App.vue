@@ -1,4 +1,9 @@
 <template>
+  <Header>
+    <template #header>
+      <h1>My Task Manager</h1>
+    </template>
+  </Header>
   <main>
     <TaskForm @add-task="addTask" />
 
@@ -14,6 +19,11 @@
       </template>
     </TaskList>
   </main>
+  <Footer>
+    <template #footer>
+      <p>© 2026 Kanny Gusenga</p>
+    </template>
+  </Footer>
 </template>
 
 <script setup>
@@ -22,6 +32,8 @@
   import TaskList from './components/TaskList.vue'
   import TaskForm from './components/TaskForm.vue'
   import TaskFilter from './components/TaskFilter.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
   const idCounter = ref(4)
   const filter = ref('All')
