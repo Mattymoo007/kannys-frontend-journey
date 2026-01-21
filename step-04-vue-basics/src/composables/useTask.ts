@@ -1,6 +1,13 @@
 import { ref } from 'vue'
 import { useLocalStorage } from './useLocalStorage.js'
 
+export type Task = {
+  id: number
+  title: string
+  priority: 'Low' | 'Medium' | 'High'
+  completed: boolean
+}
+
 export function useTask() {
   const tasks = useLocalStorage('tasks', [
     { id: 1, title: 'Learn Vue 3 basics', priority: 'High', completed: false },
@@ -14,16 +21,17 @@ export function useTask() {
       : 1
   )
 
-  function addTask(task) {
-    tasks.value.push({ ...task, id: idCounter.value++, completed: false })
+  function addTask(task: Task) {
+    const taskDefaults:Partial<Task> = { title: '', id: idCounter.value++, completed: false }
+    tasks.value.push({ ...taskDefaults, ...task })
   }
 
-  function toggleComplete(id) {
+  function toggleComplete(id: number) {
     const task = tasks.value.find((t) => t.id === id)
     if (task) task.completed = !task.completed
   }
 
-  function deleteTask(id) {
+  function deleteTask(id: number) {
     const index = tasks.value.findIndex((t) => t.id === id)
     if (index !== -1) tasks.value.splice(index, 1)
   }
