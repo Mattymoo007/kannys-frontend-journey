@@ -3,19 +3,10 @@ import { ref, computed, watch } from 'vue'
 
 export const useTaskStore = defineStore('taskStore', () => {
   // State
-  const stored = localStorage.getItem('tasks')
-  const tasks = ref(
-    stored
-      ? JSON.parse(stored)
-      : [
-          { id: 1, title: 'Learn Vue 3 basics', priority: 'High', completed: false },
-          { id: 2, title: 'Learn Git', priority: 'Low', completed: false },
-          { id: 3, title: 'Practice', priority: 'Medium', completed: false },
-        ]
-  )
-  
+  const tasks = ref([])
   const currentFilter = ref('All')
-  const idCounter = ref(tasks.value.length > 0 ? Math.max(...tasks.value.map((t) => t.id)) + 1 : 1)
+  const idCounter = ref(1)
+  const error = ref(null)
 
   // Undo state
   const lastDeletedTask = ref(null)
@@ -33,39 +24,95 @@ export const useTaskStore = defineStore('taskStore', () => {
     return tasks.value
   })
 
+  // Load from localStorage
+  function loadTasks() {
+    try {
+      const stored = localStorage.getItem('tasks')
+      if (stored) {
+        tasks.value = JSON.parse(stored)
+        idCounter.value = tasks.value.length > 0 
+          ? Math.max(...tasks.value.map((t) => t.id)) + 1 
+          : 1
+      } else {
+        tasks.value = [
+          { id: 1, title: 'Learn Vue 3 basics', priority: 'High', completed: false },
+          { id: 2, title: 'Learn Git', priority: 'Low', completed: false },
+          { id: 3, title: 'Practice', priority: 'Medium', completed: false },
+        ]
+        idCounter.value = 4
+      }
+      error.value = null
+    } catch (err) {
+      error.value = 'Failed to load tasks from storage'
+      console.error('Error loading tasks:', err)
+    }
+  }
+
   // Actions
   function addTask(task) {
-    const newTask = {
-      id: idCounter.value++,
-      title: task.title || '',
-      priority: task.priority || 'Medium',
-      completed: false,
+    try {
+      if (!task.title?.trim()) {
+        throw new Error('Task title is required')
+      }
+
+      const newTask = {
+        id: idCounter.value++,
+        title: task.title.trim(),
+        priority: task.priority || 'Medium',
+        completed: false,
+      }
+      tasks.value.push(newTask)
+      error.value = null
+    } catch (err) {
+      error.value = err.message
+      console.error('Error adding task:', err)
     }
-    tasks.value.push(newTask)
   }
 
   function toggleComplete(id) {
-    const task = tasks.value.find((t) => t.id === id)
-    if (task) {
+    try {
+      const task = tasks.value.find((t) => t.id === id)
+      if (!task) {
+        throw new Error(`Task with id ${id} not found`)
+      }
       task.completed = !task.completed
+      error.value = null
+    } catch (err) {
+      error.value = err.message
+      console.error('Error toggling task:', err)
     }
   }
 
   function deleteTask(id) {
-    const index = tasks.value.findIndex((t) => t.id === id)
-    if (index !== -1) {
-      // Store the deleted task for undo
+    try {
+      const index = tasks.value.findIndex((t) => t.id === id)
+      if (index === -1) {
+        throw new Error(`Task with id ${id} not found`)
+      }
+
       lastDeletedTask.value = { ...tasks.value[index] }
       lastDeletedIndex.value = index
       tasks.value.splice(index, 1)
+      error.value = null
+    } catch (err) {
+      error.value = err.message
+      console.error('Error deleting task:', err)
     }
   }
 
   function undoDelete() {
-    if (lastDeletedTask.value !== null && lastDeletedIndex.value !== null) {
+    try {
+      if (lastDeletedTask.value === null || lastDeletedIndex.value === null) {
+        throw new Error('No task to restore')
+      }
+
       tasks.value.splice(lastDeletedIndex.value, 0, lastDeletedTask.value)
       lastDeletedTask.value = null
       lastDeletedIndex.value = null
+      error.value = null
+    } catch (err) {
+      error.value = err.message
+      console.error('Error undoing delete:', err)
     }
   }
 
@@ -75,17 +122,39 @@ export const useTaskStore = defineStore('taskStore', () => {
   }
 
   function setFilter(filter) {
-    currentFilter.value = filter
+    try {
+      const validFilters = ['All', 'Completed', 'Pending']
+      if (!validFilters.includes(filter)) {
+        throw new Error(`Invalid filter: ${filter}`)
+      }
+      currentFilter.value = filter
+      error.value = null
+    } catch (err) {
+      error.value = err.message
+      console.error('Error setting filter:', err)
+    }
+  }
+
+  function clearError() {
+    error.value = null
   }
 
   // Watch for changes and persist to localStorage
   watch(
     tasks,
     (val) => {
-      localStorage.setItem('tasks', JSON.stringify(val))
+      try {
+        localStorage.setItem('tasks', JSON.stringify(val))
+      } catch (err) {
+        error.value = 'Failed to save tasks'
+        console.error('Error saving tasks:', err)
+      }
     },
     { deep: true }
   )
+
+  // Initialize
+  loadTasks()
 
   return {
     tasks,
@@ -93,11 +162,13 @@ export const useTaskStore = defineStore('taskStore', () => {
     filteredTasks,
     canUndo,
     lastDeletedTask,
+    error,
     addTask,
     toggleComplete,
     deleteTask,
     undoDelete,
     clearUndo,
     setFilter,
+    clearError,
   }
 })
