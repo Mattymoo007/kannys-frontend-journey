@@ -17,7 +17,12 @@ export const useTaskStore = defineStore('taskStore', () => {
   const currentFilter = ref('All')
   const idCounter = ref(tasks.value.length > 0 ? Math.max(...tasks.value.map((t) => t.id)) + 1 : 1)
 
+  // Undo state
+  const lastDeletedTask = ref(null)
+  const lastDeletedIndex = ref(null)
+
   // Getters
+  const canUndo = computed(() => lastDeletedTask.value !== null)
   const filteredTasks = computed(() => {
     if (currentFilter.value === 'Completed') {
       return tasks.value.filter((t) => t.completed)
@@ -49,8 +54,24 @@ export const useTaskStore = defineStore('taskStore', () => {
   function deleteTask(id) {
     const index = tasks.value.findIndex((t) => t.id === id)
     if (index !== -1) {
+      // Store the deleted task for undo
+      lastDeletedTask.value = { ...tasks.value[index] }
+      lastDeletedIndex.value = index
       tasks.value.splice(index, 1)
     }
+  }
+
+  function undoDelete() {
+    if (lastDeletedTask.value !== null && lastDeletedIndex.value !== null) {
+      tasks.value.splice(lastDeletedIndex.value, 0, lastDeletedTask.value)
+      lastDeletedTask.value = null
+      lastDeletedIndex.value = null
+    }
+  }
+
+  function clearUndo() {
+    lastDeletedTask.value = null
+    lastDeletedIndex.value = null
   }
 
   function setFilter(filter) {
@@ -70,9 +91,13 @@ export const useTaskStore = defineStore('taskStore', () => {
     tasks,
     currentFilter,
     filteredTasks,
+    canUndo,
+    lastDeletedTask,
     addTask,
     toggleComplete,
     deleteTask,
+    undoDelete,
+    clearUndo,
     setFilter,
   }
 })
