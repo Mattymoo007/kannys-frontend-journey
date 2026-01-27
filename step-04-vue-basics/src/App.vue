@@ -1,24 +1,24 @@
 <template>
   <Header #header>
-      <h1>My Task Manager</h1>
+    <h1>My Task Manager</h1>
   </Header>
   <main>
-    <TaskForm @add-task="addTask" />
+    <TaskForm @add-task="taskStore.addTask" />
 
-    <TaskFilter :current-filter="currentFilter" @filter-change="setFilter" />
+    <TaskFilter :current-filter="taskStore.currentFilter" @filter-change="taskStore.setFilter" />
 
-    <TaskList :tasks="filteredTasks">
+    <TaskList :tasks="taskStore.filteredTasks">
       <template #default="{ task }">
         <TaskItem
           :task="task"
-          @toggle-complete="() => toggleComplete(task.id)"
-          @delete-task="() => deleteTask(task.id)"
+          @toggle-complete="() => taskStore.toggleComplete(task.id)"
+          @delete-task="() => taskStore.deleteTask(task.id)"
         />
       </template>
     </TaskList>
   </main>
   <Footer #footer>
-      <p>© 2026 Kanny Gusenga</p>
+    <p>© 2026 Kanny Gusenga</p>
   </Footer>
 </template>
 
@@ -30,9 +30,7 @@ import TaskFilter from './components/TaskFilter.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
-import { useTask } from './composables/useTask.js'
-import { useFilter } from './composables/useFilter.js'
+import { useTaskStore } from './stores/TaskStore.js'
 
-const { tasks, addTask, toggleComplete, deleteTask } = useTask()
-const { currentFilter, setFilter, filteredTasks } = useFilter(tasks)
+const taskStore = useTaskStore()
 </script>

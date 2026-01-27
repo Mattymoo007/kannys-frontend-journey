@@ -14,8 +14,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useTaskStore } from '../stores/TaskStore.js'
 
-const emit = defineEmits(['add-task'])
+const taskStore = useTaskStore()
 
 const title = ref('')
 const priority = ref('')
@@ -23,7 +24,7 @@ const priority = ref('')
 function submitTask() {
   if (!title.value.trim() || !priority.value) return
 
-  emit('add-task', {
+  taskStore.addTask({
     title: title.value.trim(),
     priority: priority.value,
   })
