@@ -2,7 +2,7 @@
   <div class="task-item" :class="priorityClass">
     <div>
       <input type="checkbox" :checked="task.completed" @change="$emit('toggle-complete')"/>
-      <span>{{ task.title }}</span>
+     <NuxtLink :to="`/task/${task.id}`"><span>{{ task.title }}</span></NuxtLink>
     </div>
     <button @click="$emit('delete-task')">🗑️</button>
   </div>

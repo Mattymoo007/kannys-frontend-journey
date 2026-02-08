@@ -1,6 +1,8 @@
 <template>
   <form @submit.prevent="submitTask" class="task-form">
     <input v-model="title" type="text" placeholder="Enter task title" required />
+    <input v-model="description" type="text" placeholder="Enter task description" required/>
+    
     <select v-model="priority" required>
       <option disabled value="">Priority</option>
       <option>High</option>
@@ -18,6 +20,7 @@ import { ref } from 'vue'
 const emit = defineEmits(['add-task'])
 
 const title = ref('')
+const description = ref('')
 const priority = ref('')
 
 function submitTask() {
@@ -25,10 +28,12 @@ function submitTask() {
 
   emit('add-task', {
     title: title.value.trim(),
+    description: description.value.trim(),
     priority: priority.value,
   })
 
   title.value = ''
+  description.value = ''
   priority.value = ''
 }
 </script>
@@ -49,6 +54,7 @@ input[type='text'] {
 input[type='text']:focus {
   outline: none;
   border: 1px solid #4ec5c1;
+  margin: 0 4px;
 }
 select {
   border-radius: 10px;
@@ -98,7 +104,7 @@ button:disabled {
     width: 17%;
   }
   input[type='text'] {
-    width: 66%;
+    width: 36%;
   }
 }
 </style>
