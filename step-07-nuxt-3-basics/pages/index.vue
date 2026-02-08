@@ -30,6 +30,10 @@ const taskStore = useTaskStore()
 </script>
 
 <style scoped>
+body {
+  margin: 0;
+  padding: 0;
+}
 .undo-notification {
   position: fixed;
   bottom: 20px;
