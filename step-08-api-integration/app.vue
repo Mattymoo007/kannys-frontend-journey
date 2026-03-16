@@ -132,7 +132,7 @@ body {
 /* ── Main ── */
 .app-main {
   flex: 1;
-  max-width: 800px;
+  max-width: 880px;
   width: 100%;
   margin: 0 auto;
   padding: 0 1.5rem 3rem;
