@@ -3,9 +3,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  // Runtime config — keeps the API key server-side only
+  // Runtime config — keeps API keys server-side only
   runtimeConfig: {
     owmApiKey: process.env.OWM_API_KEY ?? '',
+    openaiApiKey: process.env.OPENAI_API_KEY ?? '',
   },
 
   app: {

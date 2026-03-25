@@ -46,6 +46,26 @@
           :icon-url="iconUrl"
           :format-date="formatDate"
         />
+
+        <!-- AI Features -->
+        <div class="ai-section">
+          <AiTaskSuggestions
+            :tasks="tasks"
+            :loading="tasksLoading"
+            :error="tasksError"
+            :has-weather="!!weather"
+            @generate="fetchTasks"
+          />
+
+          <WeatherChatbot
+            :messages="chatMessages"
+            :loading="chatLoading"
+            :error="chatError"
+            :has-weather="!!weather"
+            @ask="askQuestion"
+            @clear="clearChat"
+          />
+        </div>
       </template>
 
       <!-- Empty state (before first search) -->
@@ -74,6 +94,18 @@ const {
   windDirection,
   dailyForecast,
 } = useWeather()
+
+const {
+  tasks,
+  tasksLoading,
+  tasksError,
+  fetchTasks,
+  chatMessages,
+  chatLoading,
+  chatError,
+  askQuestion,
+  clearChat,
+} = useAi(weather)
 
 const quickCities = ['London', 'New York', 'Tokyo', 'Sydney', 'Paris']
 </script>
@@ -190,6 +222,20 @@ body {
   font-size: 3rem;
   display: block;
   margin-bottom: 0.75rem;
+}
+
+/* ── AI section ── */
+.ai-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .ai-section {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Footer ── */
